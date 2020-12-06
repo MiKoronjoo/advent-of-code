@@ -1,0 +1,1 @@
+print((lambda lines: eval('*'.join(map(str, (sum(line[((i + 1) * r) % len(line)] == '#' for i, line in enumerate(lines[d::d])) for r, d in [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)])))))(open('inp03').read().split()))
