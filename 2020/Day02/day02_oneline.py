@@ -1,0 +1,1 @@
+print(*(lambda res: (sum(x for x, _ in res), sum(y for _, y in res)))([(lambda policy, pw: (lambda rng, let, pw: (lambda a, b, let, pw: ((a <= pw.count(let) <= b), ((pw[a-1] == let) ^ (pw[b-1] == let))))(*map(int, rng.split('-')), let, pw))(*policy.split(), pw))(*line.split(': ')) for line in open('inp02').readlines() if line.strip()]), sep='\n')
