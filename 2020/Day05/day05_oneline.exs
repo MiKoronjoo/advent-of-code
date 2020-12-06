@@ -1,0 +1,1 @@
+(fn [h | t], f -> IO.inspect(h); IO.inspect(f.(f, t, h)) end).((File.read!("inp05") |> String.replace("L", "0") |> String.replace("R", "1") |> String.replace("F", "0") |> String.replace("B", "1") |> String.split() |> Enum.map(fn x -> String.to_integer(x, 2) end) |> Enum.sort(:desc)), (fn (_, [h | _], prv) when prv - h != 1 -> h + 1; (f, [h | t], _) -> f.(f, t, h) end))
