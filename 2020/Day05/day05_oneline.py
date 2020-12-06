@@ -1,0 +1,1 @@
+print(*(lambda l: (l[-1], [l[i] - 1 for i in range(1, len(l)) if l[i] - l[i - 1] != 1][0]))(sorted(int(code, 2) for code in open('inp05').read().replace('L', '0').replace('F', '0').replace('R', '1').replace('B', '1').split())), sep='\n')
