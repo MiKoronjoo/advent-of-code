@@ -1,11 +1,12 @@
 lst = list(map(int, input().split(',')))
 mem = {x: i for i, x in enumerate(lst[:-1])}
-while len(lst) != 30000000:
-    last = lst[-1]
-    i = mem.get(last)
-    mem[last] = len(lst) - 1
-    if i is None:
-        lst.append(0)
-    else:
-        lst.append(len(lst) - 1 - i)
-print(lst[2019], lst[-1], sep='\n')
+size = len(lst)
+last = lst[-1]
+while size != 30000000:
+    if size == 2020:
+        print(last)
+    i = mem.get(last, size - 1)
+    mem[last] = size - 1
+    last = size - 1 - i
+    size += 1
+print(last)
