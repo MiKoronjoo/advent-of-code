@@ -1,29 +1,28 @@
 #include <iostream>
-#include <vector>
 #include <unordered_map>
 
 #define LAST_TURN 30000000
-std::vector<int> lst;
 std::unordered_map<int, int> mem;
 
 
 int main() {
-    lst.reserve(LAST_TURN);
-    int n;
+    mem.reserve(LAST_TURN);
+    int n, i{};
     char _;
     while (std::cin >> n >> _)
-        lst.push_back(n);
-    lst.push_back(n);
-    for (int i = 0; i < lst.size() - 1; i++)
-        mem[lst[i]] = i;
-    while (lst.size() != LAST_TURN) {
-        int last = lst.back();
+        mem[n] = i++;
+    mem[n] = i;
+    int tmp, last = n;
+    while (++i != LAST_TURN) {
+        if (i == 2020)
+            std::cout << last << '\n';
         auto itr = mem.find(last);
+        tmp = last;
         if (itr == mem.end())
-            lst.push_back(0);
+            last = 0;
         else
-            lst.push_back(lst.size() - 1 - itr->second);
-        mem[last] = lst.size() - 2;
+            last = i - 1 - itr->second;
+        mem[tmp] = i - 1;
     }
-    std::cout << lst[2019] << '\n' << lst.back() << '\n';
+    std::cout << last << '\n';
 }
