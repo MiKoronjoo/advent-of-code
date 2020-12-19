@@ -1,27 +1,11 @@
-class N:
-    def __init__(self, num):
-        self.num = num
-
-    def __add__(self, other):
-        return N(self.num + other.num)
-
-    def __sub__(self, other):
-        return N(self.num * other.num)
-
-
-class M:
-    def __init__(self, num):
-        self.num = num
-
-    def __add__(self, other):
-        return M(self.num * other.num)
-
-    def __mul__(self, other):
-        return M(self.num + other.num)
-
-
+N = type('N', (object,), {'__init__': (lambda s, n: s.__setattr__('n', n)),
+                          '__add__': (lambda s, o: N(s.n + o.n)),
+                          '__sub__': (lambda s, o: N(s.n * o.n))})
+M = type('M', (object,), {'__init__': (lambda s, n: s.__setattr__('n', n)),
+                          '__add__': (lambda s, o: M(s.n * o.n)),
+                          '__mul__': (lambda s, o: M(s.n + o.n))})
 inp = open('inp18').read().strip().replace('*', '-')
 for d in '0123456789':
     inp = inp.replace(d, f'N({d})')
-print(sum(eval(line).num for line in inp.split('\n')))
-print(sum(eval(line).num for line in inp.replace('+', '*').replace('-', '+').replace('N', 'M').split('\n')))
+print(sum(eval(line).n for line in inp.split('\n')))
+print(sum(eval(line).n for line in inp.replace('+', '*').replace('-', '+').replace('N', 'M').split('\n')))
