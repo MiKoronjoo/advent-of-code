@@ -12,7 +12,8 @@ for food in open('inp21').read().strip().split('\n'):
             alrg[ag] = ingredients.copy()
         else:
             alrg[ag].intersection_update(ingredients)
-print(sum(1 for x in alls if x not in reduce(lambda x, y: x.union(y), alrg.values())))
+np = reduce(lambda x, y: x.union(y), alrg.values())
+print(sum(1 for x in alls if x not in np))
 res = {}
 while alrg:
     k, v = min(alrg.items(), key=lambda x: len(x[1]))
