@@ -6,8 +6,4 @@ while n != door_pk:
     i += 1
     n *= 7
     n %= 20201227
-n = 1
-for _ in range(i):
-    n *= card_pk
-    n %= 20201227
-print(n)
+print(pow(card_pk, i, 20201227))
