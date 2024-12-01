@@ -1,0 +1,1 @@
+print(*(lambda ll, rl: (sum(abs(ll[i] - rl[i]) for i in range(len(ll))), sum(n * rl.count(n) for n in ll)))(*(lambda ns: (sorted(ns[0::2]), sorted(ns[1::2])))(list(map(int, __import__('sys').stdin.read().split())))), sep='\n')
