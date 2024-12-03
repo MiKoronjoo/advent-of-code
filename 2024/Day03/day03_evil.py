@@ -1,0 +1,1 @@
+print(*(sum(int(n1) * int(n2) for n1, n2 in __import__('re').findall(r'mul\((\d+),(\d+)\)', mem)) for mem in (lambda inp: (inp, ''.join(x.split("don't()")[0] for x in inp.split('do()'))))(__import__('sys').stdin.read())), sep='\n')
